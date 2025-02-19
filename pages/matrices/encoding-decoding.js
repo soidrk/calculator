@@ -48,8 +48,8 @@ export default function EncodingDecodingPage() {
       <br/>
       <label>Mode:</label>
       <select value={mode} onChange={(e) => setMode(e.target.value)}>
-        <option value="encode">Encode (Plaintext -> Ciphertext)</option>
-        <option value="decode">Decode (Ciphertext -> Plaintext)</option>
+      <option value="encode">Encode (Plaintext {'->'} Ciphertext)</option>
+<option value="decode">Decode (Ciphertext {'->'} Plaintext)</option>
       </select>
       <br/>
       <button onClick={handleCompute}>Compute</button>
