@@ -1,14 +1,15 @@
 import { useState } from 'react';
+import { convertTemperature } from '../../utils/calculations';
 
 export default function TemperatureConversion() {
   const [celsius, setCelsius] = useState('');
   const [fahrenheit, setFahrenheit] = useState(null);
 
   const handleConvert = () => {
-    const c = parseFloat(celsius);
-    if (!isNaN(c)) {
-      setFahrenheit((c * 9/5) + 32);
-    } else {
+    try {
+      const f = convertTemperature(celsius);
+      setFahrenheit(f);
+    } catch (error) {
       setFahrenheit('Invalid input');
     }
   };
@@ -25,7 +26,7 @@ export default function TemperatureConversion() {
       />
       <button onClick={handleConvert}>Convert</button>
       {fahrenheit !== null && (
-        <p>{celsius}°C is equal to {fahrenheit}°F.</p>
+        <p>{celsius} °C = {fahrenheit} °F.</p>
       )}
     </div>
   );

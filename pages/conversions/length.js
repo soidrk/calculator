@@ -1,39 +1,32 @@
 import { useState } from 'react';
-import { percentageCalculator } from '../../utils/calculations';
+import { convertLength } from '../../utils/calculations';
 
-export default function PercentageCalculator() {
-  const [part, setPart] = useState('');
-  const [whole, setWhole] = useState('');
-  const [result, setResult] = useState(null);
+export default function LengthConversion() {
+  const [meters, setMeters] = useState('');
+  const [kilometers, setKilometers] = useState(null);
 
-  const handleCalculate = () => {
+  const handleConvert = () => {
     try {
-      const percentage = percentageCalculator(part, whole);
-      setResult(percentage);
+      const km = convertLength(meters);
+      setKilometers(km);
     } catch (error) {
-      setResult('Invalid input');
+      setKilometers('Invalid input');
     }
   };
 
   return (
     <div>
-      <h2>Percentage Calculator</h2>
-      <p>Calculate what percentage the part is of the whole:</p>
+      <h2>Length Conversion</h2>
+      <p>Convert meters to kilometers:</p>
       <input 
         type="number" 
-        value={part} 
-        onChange={(e) => setPart(e.target.value)} 
-        placeholder="Enter part" 
+        value={meters} 
+        onChange={(e) => setMeters(e.target.value)} 
+        placeholder="Enter meters" 
       />
-      <input 
-        type="number" 
-        value={whole} 
-        onChange={(e) => setWhole(e.target.value)} 
-        placeholder="Enter whole" 
-      />
-      <button onClick={handleCalculate}>Calculate Percentage</button>
-      {result !== null && (
-        <p>{part} is {typeof result === 'number' ? result.toFixed(2) : result}% of {whole}.</p>
+      <button onClick={handleConvert}>Convert</button>
+      {kilometers !== null && (
+        <p>{meters} meters = {kilometers} kilometers.</p>
       )}
     </div>
   );
