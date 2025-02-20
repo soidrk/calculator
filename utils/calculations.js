@@ -818,7 +818,7 @@ function multiplicativeInverseMod26(x) {
   }
   return null;
 }
-import { inv, multiply, matrix } from 'mathjs';
+
 
 /**
  * solveLinearEquations(equations)
