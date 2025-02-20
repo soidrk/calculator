@@ -818,3 +818,79 @@ function multiplicativeInverseMod26(x) {
   }
   return null;
 }
+import { inv, multiply, matrix } from 'mathjs';
+
+/**
+ * solveLinearEquations(equations)
+ *  Expects an array of strings, each a linear equation (e.g., "2x + 3y = 7").
+ *  Returns an object mapping variable names to their solution.
+ *
+ * This simple parser supports equations with variables that are single letters
+ * (like x, y, z) and numbers (which can be integer or decimal).
+ */
+export function solveLinearEquations(equations) {
+  // Helper to parse a single equation string
+  function parseEquation(eqStr) {
+    // Remove spaces and split at '='
+    const [lhs, rhs] = eqStr.replace(/\s+/g, '').split('=');
+    if (rhs === undefined) throw new Error('Equation must contain "="');
+    // Parse each side
+    const parseSide = (side, signMultiplier = 1) => {
+      // Match terms like +2x, -3y, or standalone numbers
+      const termRegex = /([+-]?[\d.]*)([a-zA-Z]?)/g;
+      let match, coeffs = {}, constant = 0;
+      while ((match = termRegex.exec(side)) !== null) {
+        if (match[0] === '') continue;
+        let coeffStr = match[1];
+        let variable = match[2];
+        let coeff = coeffStr === '' || coeffStr === '+' || coeffStr === '-' ? (coeffStr === '-' ? -1 : 1) : parseFloat(coeffStr);
+        coeff *= signMultiplier;
+        if (variable) {
+          coeffs[variable] = (coeffs[variable] || 0) + coeff;
+        } else {
+          constant += coeff;
+        }
+      }
+      return { coeffs, constant };
+    };
+
+    const left = parseSide(lhs, 1);
+    const right = parseSide(rhs, -1);
+    // Combine left and right: move all terms to LHS so equation becomes sum = 0.
+    const coeffs = { ...left.coeffs };
+    for (const v in right.coeffs) {
+      coeffs[v] = (coeffs[v] || 0) + right.coeffs[v];
+    }
+    const constant = left.constant + right.constant;
+    return { coeffs, constant };
+  }
+
+  // Parse all equations and collect variable names.
+  const parsed = equations.map(eq => parseEquation(eq));
+  const varSet = new Set();
+  parsed.forEach(({ coeffs }) => {
+    Object.keys(coeffs).forEach(v => varSet.add(v));
+  });
+  const variables = Array.from(varSet).sort();
+  const n = parsed.length;
+  if (variables.length !== n) {
+    throw new Error('System must have as many independent equations as variables (found ' + variables.length + ' variables and ' + n + ' equations).');
+  }
+
+  // Build coefficient matrix A and constant vector b for A * x = -constant.
+  const A = parsed.map(({ coeffs }) =>
+    variables.map(v => coeffs[v] || 0)
+  );
+  const b = parsed.map(({ constant }) => -constant);
+
+  // Solve using mathjs (if A is invertible).
+  const mA = matrix(A);
+  const mInv = inv(mA);
+  const solMatrix = multiply(mInv, matrix(b));
+  const solArray = solMatrix.toArray();
+  const solution = {};
+  variables.forEach((v, i) => {
+    solution[v] = solArray[i];
+  });
+  return solution;
+}
