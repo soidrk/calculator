@@ -20,12 +20,11 @@ const Layout = ({ children }) => {
             <li><Link href="/arithmetic">Arithmetic</Link></li>
             <li><Link href="/matrices">Matrices</Link></li>
             <li><Link href="/graphing">Graphing</Link></li>
+            <li><Link href="/recommendations">Recommendations</Link></li>
           </ul>
         </nav>
       </header>
-      <main className={styles.main}>
-        {children}
-      </main>
+      <main className={styles.main}>{children}</main>
       <footer className={styles.footer}>
         <p>© {new Date().getFullYear()} Mega Calculator</p>
       </footer>
