@@ -1,0 +1,327 @@
+{
+  "polyfillFiles": [
+    "static/chunks/polyfills-42372ed130431b0a.js"
+  ],
+  "devFiles": [],
+  "ampDevFiles": [],
+  "lowPriorityFiles": [
+    "static/E7ePz0iHBYR4NXlrRt2Xy/_buildManifest.js",
+    "static/E7ePz0iHBYR4NXlrRt2Xy/_ssgManifest.js"
+  ],
+  "rootMainFiles": [],
+  "rootMainFilesTree": {},
+  "pages": {
+    "/": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/index-6c6749ce3ef2676a.js"
+    ],
+    "/_app": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/css/dcaa90a12ec5d30a.css",
+      "static/chunks/pages/_app-feb0b0c3d8e985bf.js"
+    ],
+    "/_error": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/_error-6c72985e1af296c5.js"
+    ],
+    "/algebra": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/algebra-f59748dec16241c6.js"
+    ],
+    "/algebra/equation-solver": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/algebra/equation-solver-eef3bc9ba8a5b46a.js"
+    ],
+    "/algebra/quadratic": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/algebra/quadratic-98eef4c68b20b2c6.js"
+    ],
+    "/arithmetic": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/arithmetic-276e34f6920e9b30.js"
+    ],
+    "/arithmetic/basic": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/arithmetic/basic-462454dde3258242.js"
+    ],
+    "/arithmetic/percentage": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/arithmetic/percentage-e783a702ade93a66.js"
+    ],
+    "/calculus": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/calculus-f7895fd91c8aa645.js"
+    ],
+    "/calculus/derivative": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/calculus/derivative-191c0c0baa2f0fdc.js"
+    ],
+    "/calculus/higher-derivatives": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/calculus/higher-derivatives-4514aebb66df3846.js"
+    ],
+    "/calculus/integral": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/pages/calculus/integral-1bc7fd78555a3616.js"
+    ],
+    "/calculus/limits": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/calculus/limits-2bf86dd6c1070ee4.js"
+    ],
+    "/calculus/limits/limit-at-infinity": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/calculus/limits/limit-at-infinity-ac1979c40a9f2780.js"
+    ],
+    "/calculus/limits/limit-at-point": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/calculus/limits/limit-at-point-9b75f1dd7052380b.js"
+    ],
+    "/calculus/limits/piecewise-limit": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/calculus/limits/piecewise-limit-6ac6b75c0f0463c9.js"
+    ],
+    "/conversions": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/conversions-c7da59c413852a14.js"
+    ],
+    "/conversions/length": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/conversions/length-bf1db7a49526fb1d.js"
+    ],
+    "/conversions/temperature": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/conversions/temperature-067545fd01794d68.js"
+    ],
+    "/financial": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/financial-07a822187afd6f20.js"
+    ],
+    "/financial/investment": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/financial/investment-16b0c45f58fe5d27.js"
+    ],
+    "/financial/loan": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/financial/loan-4dd62728ba1ef161.js"
+    ],
+    "/geometry": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/geometry-c10e9cbad8a834d9.js"
+    ],
+    "/geometry/area": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/geometry/area-f31b68b836dc4f15.js"
+    ],
+    "/geometry/volume": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/geometry/volume-af41d7211f57b178.js"
+    ],
+    "/graphing": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/pages/graphing-29077d501dec2d70.js"
+    ],
+    "/matrices": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/matrices-af18218e28325fa4.js"
+    ],
+    "/matrices/basic-operations": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/matrices/basic-operations-428f86bd39c20aa1.js"
+    ],
+    "/matrices/determinant": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/matrices/determinant-23491d4f1f4d108b.js"
+    ],
+    "/matrices/eigen": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/matrices/eigen-db78535049f44430.js"
+    ],
+    "/matrices/encoding-decoding": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/matrices/encoding-decoding-fef0a752a873787e.js"
+    ],
+    "/matrices/inverse": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/matrices/inverse-b334af944a3ceba3.js"
+    ],
+    "/matrices/rref": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/matrices/rref-bae0128eff6b2cf3.js"
+    ],
+    "/recommendations": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/recommendations-70dfd30b65476767.js"
+    ],
+    "/statistics": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/statistics-d4e509119f28457b.js"
+    ],
+    "/statistics/mean": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/statistics/mean-44126b3cca336e5c.js"
+    ],
+    "/statistics/median": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/statistics/median-28728609956a1a20.js"
+    ],
+    "/stats/usage": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/stats/usage-b27c425604b09383.js"
+    ],
+    "/trigonometry": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/trigonometry-6f3c67849bb290d4.js"
+    ],
+    "/trigonometry/cosine": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/trigonometry/cosine-5231640419979c19.js"
+    ],
+    "/trigonometry/identities": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/trigonometry/identities-11305252186444b9.js"
+    ],
+    "/trigonometry/right-triangle": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/trigonometry/right-triangle-c9b554f7078db64d.js"
+    ],
+    "/trigonometry/sine": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/pages/trigonometry/sine-2264d05db0cb5648.js"
+    ],
+    "/trigonometry/trig-functions": [
+      "static/chunks/webpack-dd6ccf605183e901.js",
+      "static/chunks/framework-d7b1fd6dc103448d.js",
+      "static/chunks/main-19ed62592c4a6f5d.js",
+      "static/chunks/8297-b8f5d6eb1fdbb49c.js",
+      "static/chunks/5590-72110604c8861caa.js",
+      "static/chunks/pages/trigonometry/trig-functions-db77d9cc3a0d241c.js"
+    ]
+  },
+  "ampFirstPages": []
+}

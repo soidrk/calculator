@@ -1,86 +1,39 @@
-import { useState } from 'react';
-
-/**
- * In-memory structure:
- * recommendations = [
- *   {
- *     id: string (unique),
- *     title: string,
- *     content: string,
- *     status: "pending" | "accepted" | "declined",
- *     replies: [
- *       { id: string, content: string }
- *     ]
- *   }, ...
- * ]
- */
+import { useState, useEffect } from 'react';
 
 export default function Recommendations() {
-  // In-memory store
   const [recommendations, setRecommendations] = useState([]);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-
-  // For ID scan area
   const [idScan, setIdScan] = useState('');
   const [isOwner, setIsOwner] = useState(false);
 
-  // Helper to generate unique IDs for recommendations/replies
-  function generateId() {
-    return Math.random().toString(36).substr(2, 9);
+  // Load recommendations from the API
+  async function fetchRecommendations() {
+    const res = await fetch('/api/recommendations');
+    const data = await res.json();
+    setRecommendations(data);
   }
 
-  // Create a new recommendation
-  function handleCreateRecommendation() {
+  useEffect(() => {
+    fetchRecommendations();
+  }, []);
+
+  // Create a new recommendation via API
+  async function handleCreateRecommendation() {
     if (!title.trim() || !content.trim()) return;
-    const newRec = {
-      id: generateId(),
-      title: title.trim(),
-      content: content.trim(),
-      status: 'pending',
-      replies: []
-    };
-    setRecommendations([...recommendations, newRec]);
-    setTitle('');
-    setContent('');
-  }
-
-  // Post a reply to a recommendation
-  function handleReply(recId, replyText) {
-    if (!replyText.trim()) return;
-    setRecommendations(prev => {
-      return prev.map(rec => {
-        if (rec.id === recId) {
-          const newReply = {
-            id: generateId(),
-            content: replyText.trim()
-          };
-          return {
-            ...rec,
-            replies: [...rec.replies, newReply]
-          };
-        }
-        return rec;
-      });
+    const res = await fetch('/api/recommendations', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, content }),
     });
+    if (res.ok) {
+      await fetchRecommendations();
+      setTitle('');
+      setContent('');
+    }
   }
 
-  // Owner actions: accept, decline, or delete
-  function handleAccept(recId) {
-    setRecommendations(prev =>
-      prev.map(rec => (rec.id === recId ? { ...rec, status: 'accepted' } : rec))
-    );
-  }
-  function handleDecline(recId) {
-    setRecommendations(prev =>
-      prev.map(rec => (rec.id === recId ? { ...rec, status: 'declined' } : rec))
-    );
-  }
-  function handleDelete(recId) {
-    setRecommendations(prev => prev.filter(rec => rec.id !== recId));
-  }
-
-  // Check if user typed "ownerpermis" in ID scan area
+  // Owner scan input
   function handleIdScanSubmit() {
     if (idScan === 'ownerpermis') {
       setIsOwner(true);
@@ -93,23 +46,18 @@ export default function Recommendations() {
       <h2>Recommendations Forum</h2>
       <div style={{ marginBottom: '1em' }}>
         <p>
-          This is a space for users to post recommendations or feature requests. 
-          You can also reply to existing posts to start a conversation.
+          Post your recommendations or feature requests. You can also reply to posts.
         </p>
         {!isOwner && (
           <div>
-            <label>ID Scan: </label>
-            <input 
+            <input
               type="text"
               value={idScan}
               onChange={(e) => setIdScan(e.target.value)}
-              placeholder="Type code if you have it..."
+              placeholder="Enter owner code for admin..."
               style={{ marginRight: '0.5em' }}
             />
             <button onClick={handleIdScanSubmit}>Submit</button>
-            <span style={{ marginLeft: '0.5em', color: '#666' }}>
-              (Enter "ownerpermis" for admin privileges)
-            </span>
           </div>
         )}
         {isOwner && <p style={{ color: 'green' }}>Owner mode enabled!</p>}
@@ -119,8 +67,8 @@ export default function Recommendations() {
       <div style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '1em' }}>
         <h3>Create a New Recommendation</h3>
         <div>
-          <label>Title:</label><br />
-          <input 
+          <label>Title:</label>
+          <input
             type="text"
             style={{ width: '100%', marginBottom: '0.5em' }}
             value={title}
@@ -128,7 +76,7 @@ export default function Recommendations() {
           />
         </div>
         <div>
-          <label>Content:</label><br />
+          <label>Content:</label>
           <textarea
             rows={3}
             style={{ width: '100%', marginBottom: '0.5em' }}
@@ -139,20 +87,15 @@ export default function Recommendations() {
         <button onClick={handleCreateRecommendation}>Post Recommendation</button>
       </div>
 
-      {/* List of recommendations */}
+      {/* Display recommendations */}
       <div>
-        {recommendations.length === 0 && (
-          <p>No recommendations yet. Be the first to post!</p>
-        )}
+        {recommendations.length === 0 && <p>No recommendations yet. Be the first to post!</p>}
         {recommendations.map((rec) => (
           <RecommendationItem
             key={rec.id}
             recommendation={rec}
             isOwner={isOwner}
-            onReply={handleReply}
-            onAccept={handleAccept}
-            onDecline={handleDecline}
-            onDelete={handleDelete}
+            refresh={fetchRecommendations}
           />
         ))}
       </div>
@@ -160,46 +103,55 @@ export default function Recommendations() {
   );
 }
 
-/**
- * A single recommendation item + replies
- */
-function RecommendationItem({
-  recommendation,
-  isOwner,
-  onReply,
-  onAccept,
-  onDecline,
-  onDelete
-}) {
+// A component for a single recommendation item
+function RecommendationItem({ recommendation, isOwner, refresh }) {
   const [replyText, setReplyText] = useState('');
 
-  function handleReply() {
-    onReply(recommendation.id, replyText);
+  // Post a reply
+  async function handleReply() {
+    if (!replyText.trim()) return;
+    await fetch(`/api/recommendations/${recommendation.id}/reply`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: replyText }),
+    });
     setReplyText('');
+    refresh();
+  }
+
+  // Owner actions: accept, decline, delete
+  async function handleUpdateStatus(newStatus) {
+    await fetch(`/api/recommendations/${recommendation.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status: newStatus }),
+    });
+    refresh();
+  }
+
+  async function handleDelete() {
+    await fetch(`/api/recommendations/${recommendation.id}`, {
+      method: 'DELETE',
+    });
+    refresh();
   }
 
   return (
     <div style={{ border: '1px solid #ddd', padding: '10px', marginBottom: '1em' }}>
-      <h4 style={{ margin: '0 0 5px' }}>
-        {recommendation.title}{' '}
-        <span style={{ fontSize: '0.8em', color: '#999' }}>
-          ({recommendation.status})
-        </span>
+      <h4>
+        {recommendation.title} <span style={{ fontSize: '0.8em', color: '#999' }}>({recommendation.status})</span>
       </h4>
       <p style={{ whiteSpace: 'pre-wrap' }}>{recommendation.content}</p>
-      
-      {/* If owner, show accept/decline/delete */}
+
       {isOwner && (
         <div style={{ marginBottom: '0.5em' }}>
-          <button onClick={() => onAccept(recommendation.id)} style={{ marginRight: '0.5em' }}>
+          <button onClick={() => handleUpdateStatus('accepted')} style={{ marginRight: '0.5em' }}>
             Accept
           </button>
-          <button onClick={() => onDecline(recommendation.id)} style={{ marginRight: '0.5em' }}>
+          <button onClick={() => handleUpdateStatus('declined')} style={{ marginRight: '0.5em' }}>
             Decline
           </button>
-          <button onClick={() => onDelete(recommendation.id)}>
-            Delete
-          </button>
+          <button onClick={handleDelete}>Delete</button>
         </div>
       )}
 

@@ -1,0 +1,33 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Recommendation {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  status    String   @default("pending")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  replies   Reply[]
+}
+
+model Reply {
+  id              String   @id @default(uuid())
+  content         String
+  createdAt       DateTime @default(now())
+  recommendation  Recommendation @relation(fields: [recommendationId], references: [id])
+  recommendationId String
+}
+
+model UsageEvent {
+  id         String   @id @default(uuid())
+  eventType  String   // e.g. "page_view", "calculator_used", etc.
+  page       String
+  timestamp  DateTime @default(now())
+}
