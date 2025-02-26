@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import useUsageTracker from '../../utils/useUsageTracker';
+import useUsageTracker from '../../utils/useUsagetracker';
 
 export default function UsageStatistics() {
   // Track that the user is viewing usage stats
