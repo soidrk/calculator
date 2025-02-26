@@ -14,7 +14,6 @@ export default async function handler(req, res) {
     }
     res.status(200).json(rec);
   } else if (req.method === 'PUT') {
-    // Update recommendation (for owner actions: e.g. change status)
     const { status, title, content } = req.body;
     try {
       const rec = await prisma.recommendation.update({

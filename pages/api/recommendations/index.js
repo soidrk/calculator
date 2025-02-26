@@ -3,7 +3,6 @@ const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
-    // List all recommendations (with replies), ordered by creation time
     const recs = await prisma.recommendation.findMany({
       include: { replies: true },
       orderBy: { createdAt: 'desc' },

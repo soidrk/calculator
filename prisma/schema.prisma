@@ -24,10 +24,3 @@ model Reply {
   recommendation  Recommendation @relation(fields: [recommendationId], references: [id])
   recommendationId String
 }
-
-model UsageEvent {
-  id         String   @id @default(uuid())
-  eventType  String   // e.g. "page_view", "calculator_used", etc.
-  page       String
-  timestamp  DateTime @default(now())
-}

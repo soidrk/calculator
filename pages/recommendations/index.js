@@ -7,7 +7,6 @@ export default function Recommendations() {
   const [idScan, setIdScan] = useState('');
   const [isOwner, setIsOwner] = useState(false);
 
-  // Load recommendations from the API
   async function fetchRecommendations() {
     const res = await fetch('/api/recommendations');
     const data = await res.json();
@@ -18,7 +17,6 @@ export default function Recommendations() {
     fetchRecommendations();
   }, []);
 
-  // Create a new recommendation via API
   async function handleCreateRecommendation() {
     if (!title.trim() || !content.trim()) return;
     const res = await fetch('/api/recommendations', {
@@ -30,10 +28,11 @@ export default function Recommendations() {
       await fetchRecommendations();
       setTitle('');
       setContent('');
+    } else {
+      console.error('Failed to post recommendation');
     }
   }
 
-  // Owner scan input
   function handleIdScanSubmit() {
     if (idScan === 'ownerpermis') {
       setIsOwner(true);
@@ -67,7 +66,7 @@ export default function Recommendations() {
       <div style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '1em' }}>
         <h3>Create a New Recommendation</h3>
         <div>
-          <label>Title:</label>
+          <label>Title:</label><br />
           <input
             type="text"
             style={{ width: '100%', marginBottom: '0.5em' }}
@@ -76,7 +75,7 @@ export default function Recommendations() {
           />
         </div>
         <div>
-          <label>Content:</label>
+          <label>Content:</label><br />
           <textarea
             rows={3}
             style={{ width: '100%', marginBottom: '0.5em' }}
@@ -87,7 +86,7 @@ export default function Recommendations() {
         <button onClick={handleCreateRecommendation}>Post Recommendation</button>
       </div>
 
-      {/* Display recommendations */}
+      {/* List of recommendations */}
       <div>
         {recommendations.length === 0 && <p>No recommendations yet. Be the first to post!</p>}
         {recommendations.map((rec) => (
@@ -103,11 +102,9 @@ export default function Recommendations() {
   );
 }
 
-// A component for a single recommendation item
 function RecommendationItem({ recommendation, isOwner, refresh }) {
   const [replyText, setReplyText] = useState('');
 
-  // Post a reply
   async function handleReply() {
     if (!replyText.trim()) return;
     await fetch(`/api/recommendations/${recommendation.id}/reply`, {
@@ -119,7 +116,6 @@ function RecommendationItem({ recommendation, isOwner, refresh }) {
     refresh();
   }
 
-  // Owner actions: accept, decline, delete
   async function handleUpdateStatus(newStatus) {
     await fetch(`/api/recommendations/${recommendation.id}`, {
       method: 'PUT',
@@ -139,7 +135,10 @@ function RecommendationItem({ recommendation, isOwner, refresh }) {
   return (
     <div style={{ border: '1px solid #ddd', padding: '10px', marginBottom: '1em' }}>
       <h4>
-        {recommendation.title} <span style={{ fontSize: '0.8em', color: '#999' }}>({recommendation.status})</span>
+        {recommendation.title}{' '}
+        <span style={{ fontSize: '0.8em', color: '#999' }}>
+          ({recommendation.status})
+        </span>
       </h4>
       <p style={{ whiteSpace: 'pre-wrap' }}>{recommendation.content}</p>
 
@@ -155,7 +154,6 @@ function RecommendationItem({ recommendation, isOwner, refresh }) {
         </div>
       )}
 
-      {/* Replies */}
       <div style={{ marginLeft: '1em', borderLeft: '2px solid #eee', paddingLeft: '1em' }}>
         <h5>Replies:</h5>
         {recommendation.replies.length === 0 && (
@@ -168,7 +166,6 @@ function RecommendationItem({ recommendation, isOwner, refresh }) {
         ))}
       </div>
 
-      {/* Reply form */}
       <div style={{ marginTop: '0.5em' }}>
         <textarea
           rows={2}
