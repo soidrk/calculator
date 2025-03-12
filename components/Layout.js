@@ -1,8 +1,8 @@
 // components/Layout.js
-import Link from 'next/link';
-import styles from './Layout.module.css';
+import Link from "next/link";
+import styles from "./Layout.module.css";
 
-const Layout = ({ children }) => {
+export default function Layout({ children }) {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -30,6 +30,4 @@ const Layout = ({ children }) => {
       </footer>
     </div>
   );
-};
-
-export default Layout;
+}
