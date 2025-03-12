@@ -24,7 +24,9 @@ export default function Layout({ children }) {
           </ul>
         </nav>
       </header>
-      <main className={styles.main}>{children}</main>
+      <main className={styles.main}>
+        {children}
+      </main>
       <footer className={styles.footer}>
         <p>© {new Date().getFullYear()} Mega Calculator</p>
       </footer>
